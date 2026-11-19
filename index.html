@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>EL UMBRAL · Tesorería transparente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script src="config.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar"><button type="button" id="menuToggle" class="menu-toggle" aria-label="Abrir menú" aria-controls="sidebar" aria-expanded="false">☰</button><a class="identity" href="#inicio" aria-label="Volver al inicio"><img src="logo.png" alt="Logo de EL UMBRAL Compañía de Teatro"><div class="brand"><strong>EL UMBRAL</strong><span>COMPAÑÍA DE TEATRO</span></div></a><div class="top-title"><h1>Gestión Económica y Aportes</h1><p>TRANSPARENCIA · COOPERACIÓN · TEATRO</p></div><div class="top-tag">TESORERÍA <span id="statusDot" aria-hidden="true">●</span></div></header>
+<aside class="sidebar" id="sidebar" aria-label="Secciones"><nav>
+<button type="button" class="nav-item active" data-view="inicio"><span>⌂</span> Inicio</button>
+<button type="button" class="nav-item" data-view="aportes"><span>♙</span> Aportes</button>
+<button type="button" class="nav-item" data-view="movimientos"><span>⇄</span> Movimientos</button>
+<button type="button" class="nav-item" data-view="integrantes"><span>♧</span> Integrantes</button>
+<button type="button" class="nav-item" data-view="comprobantes"><span>▤</span> Comprobantes</button>
+<button type="button" class="nav-item" data-view="reportes"><span>▥</span> Reportes</button>
+</nav><div class="sidebar-footer">Una caja abierta para todo el elenco.</div></aside>
+<main class="main"><div class="page-heading"><div><p class="eyebrow">EL UMBRAL / TESORERÍA</p><h2 id="pageTitle">Panel financiero</h2><p class="subhead">Toda la información a la vista de la compañía.</p></div><button type="button" id="refreshBtn" class="button secondary">↻ Actualizar</button></div>
+<div id="alert" class="alert" hidden role="alert"></div>
+<section class="metrics" aria-label="Indicadores financieros">
+<article class="metric"><div class="metric-label">◉ <span>Total recaudado</span></div><strong id="kpiIngresos">$ 0</strong><small>Ingresos registrados</small></article>
+<article class="metric"><div class="metric-label">♧ <span>Aportes del elenco</span></div><strong id="kpiAportes">$ 0</strong><small id="kpiPersonas">0 integrantes aportaron</small></article>
+<article class="metric"><div class="metric-label">◈ <span>Beneficios</span></div><strong id="kpiBeneficios">$ 0</strong><small>Rifas, ventas y eventos</small></article>
+<article class="metric"><div class="metric-label">↗ <span>Gastos</span></div><strong id="kpiGastos">$ 0</strong><small>Egresos de la compañía</small></article>
+<article class="metric featured"><div class="metric-label">⚖ <span>Saldo disponible</span></div><strong id="kpiSaldo">$ 0</strong><small>Ingresos menos gastos</small></article>
+</section>
+<div class="content-grid"><section class="panel table-panel"><div class="panel-header"><div><p class="eyebrow">REGISTRO COOPERATIVO</p><h3 id="tableTitle">Aportes de integrantes</h3><p id="tableSubtitle">Aportes individuales registrados por comprobante</p></div><button type="button" class="button primary open-upload">＋ Subir comprobante</button></div>
+<div class="search-row"><input id="search" type="search" aria-label="Buscar" placeholder="Buscar integrante, movimiento o concepto…"><span id="countLabel">—</span></div>
+<div class="table-scroll"><table><thead id="tableHead"></thead><tbody id="tableBody"><tr><td>Cargando información…</td></tr></tbody></table></div><div id="mobileCards" class="mobile-cards" aria-live="polite"></div><p id="emptyMessage" class="empty" hidden>No hay registros para mostrar.</p></section>
+<aside class="right-stack"><section class="panel compact-panel"><div class="panel-header"><h3>◷ Movimientos recientes</h3><button type="button" class="text-link" data-goto="movimientos">Ver todos →</button></div><div id="recent" class="recent-list"><p class="muted">Esperando datos…</p></div></section>
+<section class="panel compact-panel"><div class="panel-header"><h3>▥ Ingresos vs. gastos</h3></div><div class="donut-area"><div class="donut" id="donut"><div class="donut-inside"><b id="donutLabel">0%</b><span>ingresos</span></div></div><div class="donut-legend"><div><i class="swatch gold"></i> Ingresos <b id="legendIngresos">$ 0</b></div><div><i class="swatch gray"></i> Gastos <b id="legendGastos">$ 0</b></div></div></div></section>
+<section class="panel upload-panel"><div class="panel-header"><h3>⇧ Subir comprobante</h3></div><p>Adjuntá tu transferencia o comprobante de beneficio/gasto. El sistema intentará leerlo y registrar el movimiento.</p><button type="button" class="upload-zone open-upload"><span>☁</span><strong>Subir y analizar comprobante</strong><small>JPG, PNG, BMP, PDF, Word · hasta 7 MB</small></button></section></aside></div>
+<footer><span>EL UMBRAL · Compañía de Teatro</span><span id="updated">Sin sincronizar</span></footer>
+</main></div>
+<div class="menu-scrim" id="menuScrim" hidden></div><div class="overlay" id="uploadOverlay" hidden><section class="dialog" role="dialog" aria-modal="true" aria-label="Subir comprobante"><header class="dialog-header"><h3>Subir comprobante</h3><button type="button" id="closeUpload" aria-label="Cerrar">×</button></header><iframe id="uploadFrame" title="Formulario de comprobantes EL UMBRAL" loading="lazy"></iframe></section></div>
+</body></html>
